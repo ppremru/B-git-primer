@@ -3,7 +3,7 @@
 ORIGINAL FILE: Standardized Red Hat AAP project structure.  
 BEST PRACTICE: Provide a README.md (markdown) file with instructions.  ftw you can preview it in vscode.
 
-ONE change
+ONE change - going to conflict.
 
 ## Simple CLI Test for Ansible
 
