@@ -1,0 +1,16 @@
+---
+- name: Local Host Intelligence
+  hosts: localhost
+  gather_facts: true
+  tasks:
+    - name: Display Operating System Details
+      ansible.builtin.debug:
+        msg: "System: {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+    - name: Display Network Interface Info
+      ansible.builtin.debug:
+        msg: "The primary IP address detected is: {{ ansible_default_ipv4.address | default('Not Found') }}"
+
+    - name: Check CPU Architecture
+      ansible.builtin.debug:
+        msg: "This node is running on {{ ansible_architecture }} architecture."

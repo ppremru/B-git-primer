@@ -1,0 +1,8 @@
+---
+- name: Hello World
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Print greeting
+      ansible.builtin.debug:
+        msg: "Hello World! This task is running locally on the control node."
