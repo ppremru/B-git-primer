@@ -1,0 +1,49 @@
+---
+- name: "Primer: Account Creation Storyboard"
+  gather_facts: false
+
+  # This section represents the "Information Needed" from your KB
+  vars:
+    first_name: "Jane"
+    middle_initial: "Q"
+    last_name: "User"
+    service_type: "CTR"
+    edipi: "1234567890"
+    expiration_date: "2027-01-01"
+    directorate: "Operations"
+    target_network: "NLAN"
+    user_email: "jane.q.user@agency.mil"
+
+  tasks:
+    - name: "Step 1: Open ADUC and Navigate to OU"
+      ansible.builtin.debug:
+        msg: "LOGIC: Navigating to the {{ directorate }} OU folder."
+
+    - name: "Step 2: Initialize New User Object"
+      ansible.builtin.debug:
+        msg: "ACTION: Creating new user object for {{ first_name }} {{ last_name }}."
+
+    - name: "Step 3: Define Logon Name (UPN)"
+      ansible.builtin.debug:
+        msg: "ACTION: Setting User logon name to {{ edipi }} with network-specific suffix."
+
+    - name: "Step 4: Set Initial Password and Flags"
+      ansible.builtin.debug:
+        msg: "POLICY: Unchecking 'User must change password at next logon' per KB instructions."
+
+    - name: "Step 5: Configure General Tab"
+      ansible.builtin.debug:
+        msg: 
+          - "FIELD - Description: Set to account creation date."
+          - "FIELD - Office: Set to {{ directorate }}."
+          - "FIELD - E-mail: Set to {{ user_email }}."
+
+    - name: "Step 6: Configure Account Tab"
+      ansible.builtin.debug:
+        msg: 
+          - "SETTING: Smart card requirement status for {{ target_network }}."
+          - "SETTING: Expiration date set to {{ expiration_date }}."
+
+    - name: "Step 7: Assign Group Memberships"
+      ansible.builtin.debug:
+        msg: "ACTION: Adding user to all mandatory groups for {{ target_network }}."
