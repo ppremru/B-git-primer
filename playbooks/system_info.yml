@@ -1,6 +1,5 @@
 ---
-- name: Local Host Intelligence
-  hosts: localhost
+- name: Host Snoop
   gather_facts: true
   tasks:
     - name: Display Operating System Details
