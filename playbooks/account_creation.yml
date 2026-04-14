@@ -1,4 +1,5 @@
 ---
+hosts: all
 - name: "Primer: Account Creation Storyboard"
   gather_facts: false
 
