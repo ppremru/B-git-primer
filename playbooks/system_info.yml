@@ -1,6 +1,6 @@
 ---
-hosts: all
 - name: Host Snoop
+  hosts: all
   gather_facts: true
   tasks:
     - name: Display Operating System Details
