@@ -1,0 +1,19 @@
+---
+- name: Windows Connectivity Verification Playbook
+  hosts: windows
+  gather_facts: false
+  vars:
+    test_note: "Use Case 1"
+
+  tasks:
+    - name: "Pre-Flight Check for {{ test_note }}"
+      ansible.builtin.debug:
+        msg: "target:  {{ inventory_hostname }}"
+
+    - name: Execute ping
+      ansible.windows.win_ping:
+      register: ping_result
+
+    - name: Post-Flight Response
+      ansible.builtin.debug:
+        msg: "win_ping result: {{ ping_result.ping }}"
